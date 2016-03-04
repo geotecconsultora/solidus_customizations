@@ -1,0 +1,7 @@
+example_id                                                           | status | run_time     |
+-------------------------------------------------------------------- | ------ | ------------ |
+./spec/models/spree/customization/item_adjuster_spec.rb[1:1:1]       | passed | 1.14 seconds |
+./spec/models/spree/customization/item_adjuster_spec.rb[1:1:2]       | passed | 1.37 seconds |
+./spec/models/spree/customization/item_adjuster_spec.rb[1:2:1:1]     | passed | 1.36 seconds |
+./spec/models/spree/customization/item_adjuster_spec.rb[1:2:2:1:1]   | failed | 5.8 seconds  |
+./spec/models/spree/customization/item_adjuster_spec.rb[1:2:2:2:1:1] | failed | 2.59 seconds |

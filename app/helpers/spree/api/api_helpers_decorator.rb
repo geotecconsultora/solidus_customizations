@@ -1,0 +1,1 @@
+Spree::Api::ApiHelpers.order_attributes << :customization_total
