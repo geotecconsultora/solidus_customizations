@@ -17,14 +17,12 @@ module Spree
         end
 
         line_item.customizations.any? && line_item.customizations.all? do |customization|
-          options[:customizations_attributes].values.include?(
-              {
-                  "source_id" => customization.source_id.to_s,
-                  "source_type" => customization.source_type.to_s,
-                  "configuration_id" => customization.configuration_id.to_s,
-                  "configuration_type" => customization.configuration_type.to_s
-              }
-          )
+          options[:customizations_attributes].values.any? do |customization_attributes|
+            customization_attributes[:source_id] == customization.source_id.to_s &&
+                customization_attributes[:source_type] == customization.source_type.to_s &&
+                customization_attributes[:configuration_id] == customization.configuration_id.to_s &&
+                customization_attributes[:configuration_type] == customization.configuration_type.to_s
+          end
         end
       end
     end
