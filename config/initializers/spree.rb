@@ -1,7 +1,7 @@
 Rails.application.config.to_prepare do
   Spree::Api::ApiHelpers.order_attributes << :customization_total
 
-  Spree::Api::LineItemsController.line_item_options << {
+  Spree::Api::LineItemsController.line_item_options = {
       customizations_attributes:
           [
               :source_id,
