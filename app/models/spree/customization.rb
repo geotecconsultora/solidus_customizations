@@ -22,7 +22,7 @@ module Spree
       return unless source_id_changed? || (source && source.changed?)
 
       # Hardcoded rendering class, let this be configurable resource in the future
-      self.virtual_proof_url = Spree::Designs::VirtualProof::LiquidPixels.new(customizable, source).url
+      self.virtual_proof_url = Spree::Designs::VirtualProof::LiquidPixels.new(customizable, source).url.html_safe
       self.virtual_proof.clear
       self.virtual_proof_changed = true
     end
