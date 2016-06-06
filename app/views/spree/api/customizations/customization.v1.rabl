@@ -8,3 +8,15 @@ node :virtual_proof, if: lambda { |customization| customization.virtual_proofabl
          large: customization.virtual_proof.url(:large, escape: false)
     }
 end
+
+child :source do
+    attributes :id, :size, :medium
+
+    node :rendering do |source|
+       {
+         small: source.rendering.url(:small),
+         medium: source.rendering.url(:medium),
+         large: source.rendering.url(:large)
+       }
+    end
+end
