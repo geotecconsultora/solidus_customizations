@@ -2,9 +2,10 @@ module Spree
   module Api
     class CustomizationsController < Spree::Api::BaseController
       before_filter :load_line_item, only: [:update, :destroy]
+      before_filter :find_customization, only: [:update, :destroy]
 
       def update
-        @customization = find_customization
+        authorize! :update, @line_item.order, order_token
 
         if @customization.update_attributes(customization_params)
           respond_with(@customization, default_template: :show)
@@ -14,7 +15,7 @@ module Spree
       end
 
       def destroy
-        @customization = find_customization
+        authorize! :destroy, @line_item.order, order_token
         @customization.destroy
         respond_with(@customization, status: 204)
       end
@@ -28,7 +29,7 @@ module Spree
 
       def find_customization
         id = params[:id].to_i
-        @line_item.customizations.detect { |customization| customization.id == id } ||
+        @customization = @line_item.customizations.detect { |customization| customization.id == id } ||
             raise(ActiveRecord::RecordNotFound)
       end
 
