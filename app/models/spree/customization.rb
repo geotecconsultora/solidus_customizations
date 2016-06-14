@@ -7,9 +7,9 @@ module Spree
     belongs_to :customizable, polymorphic: true, touch: true
     belongs_to :configuration, polymorphic: true
     belongs_to :source, polymorphic: true
-    belongs_to :option, polymorphic: true
+    belongs_to :article, polymorphic: true
 
-    has_attached_file :virtual_proof, styles: {medium: "600x600>", small: "300x300>"}, default_url: :virtual_proof_url
+    has_attached_file :virtual_proof, styles: { medium: "600x600>", small: "300x300>" }, default_url: :virtual_proof_url
     validates_attachment_content_type :virtual_proof, content_type: /\Aimage\/.*\Z/
 
     def virtual_proofable?
@@ -19,10 +19,10 @@ module Spree
     private
 
     def set_virtual_proof
-      return unless source_id_changed? || (source && source.changed?)
+      return unless article_id_changed? || (article && article.changed?)
 
       # Hardcoded rendering class, let this be configurable resource in the future
-      self.virtual_proof_url = Spree::Designs::VirtualProof::LiquidPixels.new(customizable, source).url.html_safe
+      self.virtual_proof_url = Spree::Designs::VirtualProof::LiquidPixels.new(customizable, article).url.html_safe
       self.virtual_proof.clear
       self.virtual_proof_changed = true
     end

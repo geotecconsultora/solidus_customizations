@@ -4,7 +4,7 @@ class CreateSpreeCustomizations < ActiveRecord::Migration
       t.references :source, polymorphic: true
       t.references :customizable, polymorphic: true
       t.references :configuration, polymorphic: true
-      t.references :option, polymorphic: true
+      t.references :article, polymorphic: true
 
       t.string :virtual_proof_url
       t.attachment :virtual_proof
