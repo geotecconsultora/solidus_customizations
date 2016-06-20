@@ -3,7 +3,7 @@ module Spree
     extend ActiveSupport::Concern
 
     included do
-      has_many :customizations, as: :customizable
+      has_many :customizations, as: :customizable, class_name: 'Spree::ItemCustomization'
       accepts_nested_attributes_for :customizations, reject_if: :duplicate_configuration
 
       prepend(InstanceMethods)

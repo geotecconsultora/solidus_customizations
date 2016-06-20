@@ -9,7 +9,7 @@ node :virtual_proof, if: lambda { |customization| customization.virtual_proofabl
     }
 end
 
-child :source do
+child :article do
     attributes :id, :size, :medium
 
     node :rendering do |source|

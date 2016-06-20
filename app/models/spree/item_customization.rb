@@ -1,5 +1,8 @@
 module Spree
-  class Customization < Spree::Base
+  # Customizations represent additional information
+  # that can be added to items (line items or shipments)
+  # in order to make them unique or change their total.
+  class ItemCustomization < Spree::Base
     after_create :adjust_item
     before_save :set_virtual_proof, if: :virtual_proofable?
     after_commit :save_virtual_proof, if: :virtual_proofable?

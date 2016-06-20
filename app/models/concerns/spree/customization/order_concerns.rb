@@ -18,8 +18,8 @@ module Spree
 
         line_item.customizations.any? && line_item.customizations.all? do |customization|
           options[:customizations_attributes].values.any? do |customization_attributes|
-            customization_attributes[:source_id] == customization.source_id.to_s &&
-                customization_attributes[:source_type] == customization.source_type.to_s &&
+            customization_attributes[:article_id] == customization.article_id.to_s &&
+                customization_attributes[:article_type] == customization.article_type.to_s &&
                 customization_attributes[:configuration_id] == customization.configuration_id.to_s &&
                 customization_attributes[:configuration_type] == customization.configuration_type.to_s
           end

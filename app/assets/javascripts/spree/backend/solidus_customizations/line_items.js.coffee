@@ -7,9 +7,9 @@ onAddCustomization = (e) ->
   medium = $(this).data('medium')
   size = $(this).data('size')
   configuration_id = $(this).data('configuration-id')
-  option_id = $(this).data('option-id')
+  source_id = $(this).data('source-id')
   SelectDesign medium, size, (design) ->
-    addCustomization(line_item_id, quantity, price, design, configuration_id, option_id)
+    addCustomization(line_item_id, quantity, price, design, configuration_id, source_id)
 
 onEditCustomization = (e) ->
   e.preventDefault()
@@ -33,7 +33,7 @@ lineItemURL = (id) ->
 customizationUrl = (line_item_id, id) ->
   "#{Spree.routes.customizations_api(line_item_id)}/#{id}.json"
 
-addCustomization = (line_item_id, quantity, price, design, configuration_id, option_id) ->
+addCustomization = (line_item_id, quantity, price, design, configuration_id, source_id) ->
   url = lineItemURL(line_item_id)
   data = JSON.stringify(
     line_item:
@@ -41,12 +41,12 @@ addCustomization = (line_item_id, quantity, price, design, configuration_id, opt
       options:
         price: price
         customizations_attributes: [
-          source_id: design.id
-          source_type: 'Spree::Design'
+          article_id: design.id
+          article_type: 'Spree::Design'
           configuration_id: configuration_id
           configuration_type: 'Spree::DesignConfiguration'
-          option_id: option_id
-          option_type: 'Spree::DesignOption'
+          source_id: source_id
+          source_type: 'Spree::DesignOption'
         ]
   )
   Spree.ajax(
@@ -64,6 +64,6 @@ editCustomization = (line_item_id, design_id, customization_id) ->
     url: url,
     data:
       customization:
-        source_id: design_id
+        article_id: design_id
   ).done (msg) ->
     window.Spree.advanceOrder()

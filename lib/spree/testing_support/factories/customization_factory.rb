@@ -1,4 +1,5 @@
 FactoryGirl.define do
-  factory :customizations, class: Spree::Customization do
+  factory :customization, class: Spree::Customization do
+    line_item
   end
 end

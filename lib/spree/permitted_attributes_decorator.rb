@@ -8,8 +8,8 @@ Spree::PermittedAttributes.module_eval do
                                  :source_id,
                                  :source_type,
                                  :configuration_type,
-                                 :option_id,
-                                 :option_type
+                                 :article_id,
+                                 :article_type
                              ]
                          }
                      ))

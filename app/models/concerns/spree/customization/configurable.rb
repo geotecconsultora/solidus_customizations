@@ -3,10 +3,6 @@ module Spree
     extend ActiveSupport::Concern
 
     included do
-      belongs_to :product
-
-      validates :name, presence: true
-
       include Spree::AdjustmentSource
 
       before_destroy :deals_with_adjustments_for_deleted_source

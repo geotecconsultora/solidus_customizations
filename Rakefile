@@ -11,7 +11,8 @@ task :default do
     Rake::Task[:test_app].invoke
     Dir.chdir("../../")
   end
-  Rake::Task[:spec].invoke
+  R
+  ake::Task[:spec].invoke
 end
 
 desc 'Generates a dummy app for testing'
