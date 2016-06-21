@@ -5,9 +5,9 @@ Spree::PermittedAttributes.module_eval do
                          {
                              customizations_attributes: [
                                  :configuration_id,
+                                 :configuration_type,
                                  :source_id,
                                  :source_type,
-                                 :configuration_type,
                                  :article_id,
                                  :article_type
                              ]
