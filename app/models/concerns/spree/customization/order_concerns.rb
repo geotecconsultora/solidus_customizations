@@ -9,6 +9,14 @@ module Spree
     end
 
     module InstanceMethods
+      def associate_designs
+        line_items.each do |line_item|
+          line_item.customizations.each do |customization|
+            customization.article.update_column("user_id", user_id)
+          end
+        end
+      end
+
       def customizations_match(line_item, options = {})
         options = options.with_indifferent_access
 
