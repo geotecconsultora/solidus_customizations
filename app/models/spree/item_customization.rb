@@ -31,7 +31,7 @@ module Spree
     end
 
     def save_virtual_proof
-      return unless self.virtual_proof_changed
+      return unless self.virtual_proof_changed && Rails.env.production?
 
       self.update_column('virtual_proof_changed', false)
       SaveVirtualProofJob.perform_later self

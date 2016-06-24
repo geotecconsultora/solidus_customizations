@@ -3,12 +3,6 @@ module Spree
     extend ActiveSupport::Concern
 
     included do
-      include Spree::AdjustmentSource
-
-      before_destroy :deals_with_adjustments_for_deleted_source
-
-      has_many :adjustments, as: :source
-
       prepend(InstanceMethods)
     end
 
