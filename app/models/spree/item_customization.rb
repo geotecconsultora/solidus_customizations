@@ -15,7 +15,6 @@ module Spree
     has_attached_file :virtual_proof, styles: { medium: "600x600>", small: "300x300>" }, default_url: :virtual_proof_url
     validates_attachment_content_type :virtual_proof, content_type: /\Aimage\/.*\Z/
 
-    validates :configuration, presence: true
     validates :customizable, presence: true
     validates :article, presence: true
 
