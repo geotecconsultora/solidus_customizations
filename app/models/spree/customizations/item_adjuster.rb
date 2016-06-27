@@ -19,7 +19,10 @@ module Spree
       return unless item.customizations.any?
       # Using .destroy_all to make sure callbacks fire
       item.adjustments.customization.destroy_all
-      item.customizations.map { |customization| customization.source.adjust(item) }
+
+      item.customizations.where.not(source_id: nil).map do |customization|
+        customization.source.adjust(item)
+      end
     end
   end
 end

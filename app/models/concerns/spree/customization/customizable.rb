@@ -13,6 +13,12 @@ module Spree
       def duplicate_configuration(attributes)
         !!customizations.any? { |customization| customization.configuration_id == attributes.with_indifferent_access[:configuration_id].to_i }
       end
+
+      # Need to also check for configuration_type
+      # *Add test*
+      # def duplicate_configuration(attributes)
+      #   !!customizations.any? { |customization| customization.configuration_id == attributes.with_indifferent_access[:configuration_id].to_i && customization.configuration_type == attributes.with_indifferent_access[:configuration_type].to_s }
+      # end
     end
   end
 end
