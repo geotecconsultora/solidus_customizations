@@ -3,7 +3,7 @@
 Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.name = "solidus_customizations"
-  s.version = "0.1.13"
+  s.version = "0.1.14"
   s.summary = "Customizations for products"
   s.required_ruby_version = ">= 2.1"
 
