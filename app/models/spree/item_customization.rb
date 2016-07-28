@@ -18,7 +18,17 @@ module Spree
     validates :article, presence: true
 
     def virtual_proofable?
-      configuration.try(:virtual_proofable?)
+      configuration.try(:virtual_proofable?) == nil || configuration.try(:virtual_proofable?)
+    end
+
+    def force_set_virtual_proof(url = nil)
+      if url
+        self.virtual_proof_url = url.html_safe
+      else
+        self.virtual_proof_url = Spree::Designs::VirtualProof::LiquidPixels.new(customizable, article).url.html_safe
+      end
+      self.virtual_proof.clear
+      self.virtual_proof_changed = true
     end
 
     private
