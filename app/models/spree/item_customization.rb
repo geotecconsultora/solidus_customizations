@@ -14,11 +14,11 @@ module Spree
 
     validates :article, presence: true
 
-    after_create :adjust_item
-
     before_save :set_virtual_proof, if: :virtual_proofable?
 
-    after_commit :save_virtual_proof, if: :virtual_proofable?
+    after_create :adjust_item
+
+    after_commit :attach_virtual_proof, if: :virtual_proofable?
 
     def virtual_proofable?
       configuration.try(:virtual_proofable?) == nil || configuration.try(:virtual_proofable?)
@@ -45,11 +45,11 @@ module Spree
       self.virtual_proof_changed = true
     end
 
-    def save_virtual_proof
-      return unless self.virtual_proof_changed && Rails.env.production?
+    def attach_virtual_proof
+      return unless self.virtual_proof_changed
 
       self.update_column('virtual_proof_changed', false)
-      SaveVirtualProofJob.perform_later self
+      AttachVirtualProofJob.perform_later self
     end
 
     def adjust_item
