@@ -3,19 +3,22 @@ module Spree
   # that can be added to items (line items or shipments)
   # in order to make them unique or change their total.
   class ItemCustomization < Spree::Base
-    after_create :adjust_item
-    before_save :set_virtual_proof, if: :virtual_proofable?
-    after_commit :save_virtual_proof, if: :virtual_proofable?
-
     belongs_to :customizable, polymorphic: true, touch: true
     belongs_to :configuration, polymorphic: true
     belongs_to :source, -> { with_deleted }, polymorphic: true
     belongs_to :article, -> { with_deleted }, polymorphic: true
 
     has_attached_file :virtual_proof, styles: { medium: "600x600>", small: "300x300>" }, default_url: :virtual_proof_url
+
     validates_attachment_content_type :virtual_proof, content_type: /\Aimage\/.*\Z/
 
     validates :article, presence: true
+
+    after_create :adjust_item
+
+    before_save :set_virtual_proof, if: :virtual_proofable?
+
+    after_commit :save_virtual_proof, if: :virtual_proofable?
 
     def virtual_proofable?
       configuration.try(:virtual_proofable?) == nil || configuration.try(:virtual_proofable?)
