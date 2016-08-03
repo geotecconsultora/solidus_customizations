@@ -10,6 +10,11 @@ module Spree
     end
 
     module InstanceMethods
+
+      def discounted_amount
+        super + customization_total
+      end
+
       def duplicate_configuration(attributes)
         !!customizations.any? { |customization| customization.configuration_id == attributes.with_indifferent_access[:configuration_id].to_i }
       end
