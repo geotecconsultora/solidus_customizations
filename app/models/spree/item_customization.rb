@@ -8,7 +8,11 @@ module Spree
     belongs_to :source, -> { with_deleted }, polymorphic: true
     belongs_to :article, -> { with_deleted }, polymorphic: true
 
-    has_attached_file :virtual_proof, styles: { medium: "600x600>", small: "300x300>" }, default_url: :virtual_proof_url
+    has_attached_file :virtual_proof, styles: {
+        large: "720x720>",
+        medium: "360x360>",
+        small: "180x180>"
+    }, default_url: :virtual_proof_url
 
     validates_attachment_content_type :virtual_proof, content_type: /\Aimage\/.*\Z/
 
