@@ -17,6 +17,7 @@ module Spree
     # @return [Array<Spree::Adjustment>] newly created adjustments
     def adjust!
       return unless item.customizations.any?
+
       # Using .destroy_all to make sure callbacks fire
       item.adjustments.customization.destroy_all
 
