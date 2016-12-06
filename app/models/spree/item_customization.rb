@@ -20,7 +20,7 @@ module Spree
 
     before_save :set_virtual_proof, if: :virtual_proofable?
 
-    after_create :adjust_item
+    after_commit :adjust_item, on: :create
 
     after_commit :attach_virtual_proof, if: :virtual_proofable?
 
