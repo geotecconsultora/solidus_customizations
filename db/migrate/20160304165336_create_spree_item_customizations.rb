@@ -1,4 +1,4 @@
-class CreateSpreeItemCustomizations < ActiveRecord::Migration
+class CreateSpreeItemCustomizations < SolidusSupport::Migration[4.2]
   def change
     create_table :spree_item_customizations do |t|
       t.references :source, polymorphic: true
