@@ -34,7 +34,7 @@ module Spree
       end
 
       def customization_params
-        params.require(:customization).permit(:article_id)
+        params.require(:customization).permit(:article_id, :is_non_standard)
       end
     end
   end
