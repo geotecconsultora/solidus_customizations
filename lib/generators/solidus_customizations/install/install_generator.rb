@@ -5,18 +5,7 @@ module SolidusCustomizations
       class_option :auto_run_migrations, type: :boolean, default: false
 
       def add_javascripts
-        append_file 'vendor/assets/javascripts/spree/backend/all.js', "//= require spree/backend/solidus_customization\n"
-      end
-
-      def add_stylesheets
-        inject_into_file 'vendor/assets/stylesheets/spree/backend/all.css', " *= require spree/backend/solidus_customization\n", before: /\*\//, verbose: true
-      end
-
-      def include_seed_data
-        append_file "db/seeds.rb", <<-SEEDS
-\n
-SpreeCustomizations::Engine.load_seed if defined?(SpreeCustomizations::Engine)
-        SEEDS
+        append_file 'vendor/assets/javascripts/spree/backend/all.js', "//= require spree/backend/solidus_customizations\n"
       end
 
       def add_migrations

@@ -1,8 +1,8 @@
 module Spree
   module Api
     class CustomizationsController < Spree::Api::BaseController
-      before_filter :load_line_item, only: [:create, :update, :destroy]
-      before_filter :find_customization, only: [:update, :destroy]
+      before_action :load_line_item, only: [:create, :update, :destroy]
+      before_action :find_customization, only: [:update, :destroy]
 
       def create
         authorize! :create, @line_item.order, order_token
@@ -45,7 +45,7 @@ module Spree
       end
 
       def customization_params
-        params.require(:customization).permit(:article_id, :artile_type, :source_id, :source_type, :is_non_standard)
+        params.require(:customization).permit(*Spree::PermittedAttributes.design_attributes)
       end
     end
   end
