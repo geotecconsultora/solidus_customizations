@@ -1,5 +1,5 @@
 cache [root_object]
-attributes :id, :source_id, :source_type, :configuration_id, :configuration_type
+attributes :id, :source_id, :source_type, :configuration_id, :configuration_type, :is_non_standard
 
 node :virtual_proof, if: lambda { |customization| customization.virtual_proofable? } do |customization|
     {

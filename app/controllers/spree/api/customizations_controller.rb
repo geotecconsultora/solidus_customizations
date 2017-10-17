@@ -45,7 +45,7 @@ module Spree
       end
 
       def customization_params
-        params.require(:customization).permit(*Spree::PermittedAttributes.design_attributes)
+        params.require(:customization).permit(*Spree::PermittedAttributes.item_customization_attributes)
       end
     end
   end

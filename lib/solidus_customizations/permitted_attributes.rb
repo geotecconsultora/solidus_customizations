@@ -9,7 +9,8 @@ module SolidusCustomizations
             :source_id,
             :source_type,
             :article_id,
-            :article_type
+            :article_type,
+            :is_non_standard
           ]
           }]}])
         end
