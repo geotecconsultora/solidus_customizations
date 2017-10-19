@@ -9,6 +9,10 @@ node :virtual_proof, if: lambda { |customization| customization.virtual_proofabl
     }
 end
 
+child :configuration do
+  attributes :name
+end
+
 child :article do
     attributes :id, :size, :medium
 
