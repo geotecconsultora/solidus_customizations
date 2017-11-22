@@ -1,6 +1,6 @@
 json.cache! [customization] do
   json.(customization, :id, :source_id, :source_type, :configuration_id, :configuration_type)
-  
+
   # json.virtual_proof(if: lambda { |customization| customization.virtual_proofable? }) do
   json.virtual_proof do
     if lambda { |customization| customization.virtual_proofable? }
@@ -16,10 +16,10 @@ json.cache! [customization] do
   json.design do
     json.(customization.article, :id, :size, :medium)
     json.rendering do
-      json.small customization.article.source.rendering.url(:small)
-      json.medium customization.article.source.rendering.url(:medium)
-      json.large customization.article.source.rendering.url(:large)
-      json.original customization.article.source.rendering.url(:original)
+      json.small customization.article.rendering.url(:small)
+      json.medium customization.article.rendering.url(:medium)
+      json.large customization.article.rendering.url(:large)
+      json.original customization.article.rendering.url(:original)
     end
   end
 end
