@@ -4,7 +4,9 @@ module Spree
   # in order to make them unique or change their total.
   class ItemCustomization < Spree::Base
     belongs_to :customizable, polymorphic: true, touch: true
-    belongs_to :configuration, polymorphic: true
+    # We are assuming this scope exists on polymorphic model that is
+    # created in other gems (like solidus_designs)
+    belongs_to :configuration, -> { with_deleted }, polymorphic: true
     belongs_to :source, -> { with_deleted }, polymorphic: true
     belongs_to :article, -> { with_deleted }, polymorphic: true
 
