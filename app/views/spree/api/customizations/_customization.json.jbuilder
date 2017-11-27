@@ -1,5 +1,5 @@
 json.cache! [customization] do
-  json.(customization, :id, :source_id, :source_type, :configuration_id, :configuration_type)
+  json.(customization, :id, :source_id, :source_type, :configuration_id, :configuration_type, :is_non_standard)
 
   json.virtual_proof do
     if customization.virtual_proofable?
