@@ -15,7 +15,7 @@ json.cache! [customization] do
   json.configuration(customization.configuration, :id, :name, :type)
 
   json.design do
-    json.(customization.article, :id, :size, :medium)
+    json.(customization.article, :id, :size, :medium, :markup)
     json.rendering do
       json.small customization.article.rendering.url(:small)
       json.medium customization.article.rendering.url(:medium)
