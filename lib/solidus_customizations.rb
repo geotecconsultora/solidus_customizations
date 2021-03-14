@@ -1,2 +1,2 @@
 require 'solidus_core'
-require 'spree/customizations/engine'
+require 'solidus_customizations/engine'
