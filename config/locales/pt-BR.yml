@@ -1,0 +1,23 @@
+---
+en:
+  activerecord:
+    models:
+      spree/customization_configuration:
+        one: "Configuração de Personalização"
+        other: "Configurações de Personalização"
+  spree:
+    admin:
+      customization_option_configurations:
+        customization_option_configuration: "Configuração de Personalização"
+        gift_card_originator: "Cartão Presente - Pedido #%{order_number}"
+        redeem: "Resgatar"
+        redeem_gift_card: "Resgatar Cartão Presente"
+        redeemed_gift_card: "Cartão Presente Resdatado"
+        redemption_code: "Código de Resgate"
+        errors:
+          not_found: "Cartão Presente não encontrado"
+          please_try_again: "Por favor, tente novamente"
+          unable_to_redeem_gift_card: "Não é possível resgatar cartão-presente"
+    back_to_customization_configurations_list: "Voltar para configurações de personalização"
+    new_customization_configuration: "Nova configuração de personalização"
+    customization_configurations: "Configurações de personalização"
