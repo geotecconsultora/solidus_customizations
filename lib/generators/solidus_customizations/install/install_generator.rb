@@ -5,11 +5,11 @@ module SolidusCustomizations
       class_option :auto_run_migrations, type: :boolean, default: false
 
       def add_javascripts
-        append_file 'vendor/assets/javascripts/spree/backend/all.js', "//= require spree/backend/solidus_customization\n"
+        append_file 'vendor/assets/javascripts/spree/backend/all.js', "//= require spree/backend/solidus_customizations\n"
       end
 
       def add_stylesheets
-        inject_into_file 'vendor/assets/stylesheets/spree/backend/all.css', " *= require spree/backend/solidus_customization\n", before: /\*\//, verbose: true
+        inject_into_file 'vendor/assets/stylesheets/spree/backend/all.css', " *= require spree/backend/solidus_customizations\n", before: /\*\//, verbose: true
       end
 
       def include_seed_data
@@ -20,7 +20,7 @@ SpreeCustomizations::Engine.load_seed if defined?(SpreeCustomizations::Engine)
       end
 
       def add_migrations
-        run 'bundle exec rake railties:install:migrations FROM=solidus_customization'
+        run 'bundle exec rake railties:install:migrations FROM=solidus_customizations'
       end
 
       def run_migrations
